@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Laya from '../assets/Laya.png';
 
 const About = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);

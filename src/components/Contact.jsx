@@ -16,7 +16,6 @@ const Contacts = () => {
 
           {/* Single Contact Panel */}
           <div className="transition-transform transform hover:scale-105 hover:shadow-xl p-6 bg-white rounded-lg shadow-md max-w-lg mx-auto">
-            <h2 className="text-2xl font-semibold text-grey-600">Contact Details</h2>
             <p className="text-gray-600 mt-4">
               <strong>Address:</strong><br />
               Sampaguita St., Phase 2, Soldiers Hills IV, Molino VI<br />
