@@ -22,7 +22,7 @@ const Hero = () => {
             <p className="text-lg px-10 text-[#c5ffdf] ">Register for courses, manage your profile, and access academic information.</p>
 
             {/* Panels for Log In and Apply */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 h-[100px] px-10 md:px-[300px] gap-6 mt-10 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 h-[100px] px-10 md:px-[20%] gap-6 mt-10 w-full">
               {/* Log In Panel */}
               <div className="bg-black bg-opacity-40 rounded-lg shadow-lg p-6 hover:bg-opacity-60 transition duration-300 cursor-pointer
                 ">

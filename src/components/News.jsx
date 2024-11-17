@@ -10,8 +10,8 @@ const NewsUpdates = () => {
 
     <div className=" top-0 left-0 w-full h-screen bg-[#081708]/50 flex items-center justify-center z-10"> 
 
-      <div className="max-w-7xl w-full bg-white bg-opacity-80 p-6 mx-auto lg:px-8 ">
-        <h2 className="text-[40px] font-bold text-center text-[#092919] mb-6">NEWS AND UPDATES</h2>
+      <div className="max-w-7xl w-full bg-black bg-opacity-90 p-6 mx-auto lg:px-8 ">
+        <h2 className="text-[40px] font-bold text-center text-[#c5ffdf] mb-6">NEWS AND UPDATES</h2>
 
         {/* Three Column Grid Layout for News Items */}
         <div className=" px-4 sm:px-[100px] grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -39,7 +39,7 @@ const NewsUpdates = () => {
 
         {/* View More Link */}
         <div className="text-center mt-8">
-          <a href="/news" className="text-[#092919] hover:underline">
+          <a href="/news" className="text-[#c5ffdf] hover:underline">
             View All News and Updates
           </a>
         </div>
