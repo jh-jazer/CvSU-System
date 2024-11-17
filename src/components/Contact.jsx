@@ -15,7 +15,7 @@ const Contacts = () => {
           <h1 className="text-4xl font-extrabold text-[#092919] text-primary mb-8">Contact Information</h1>
 
           {/* Single Contact Panel */}
-          <div className="transition-transform transform hover:scale-105 hover:shadow-xl p-6 bg-white rounded-lg shadow-md max-w-lg mx-auto">
+          <div className="transition-transform transform hover:scale-105 hover:shadow-xl p-6 bg-[#c5ffdf] rounded-lg shadow-md max-w-lg mx-auto">
             <p className="text-gray-600 mt-4">
               <strong>Address:</strong><br />
               Sampaguita St., Phase 2, Soldiers Hills IV, Molino VI<br />
