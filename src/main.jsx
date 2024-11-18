@@ -6,6 +6,7 @@ import Login from './pages/Login.jsx';
 import Apply from './pages/Apply.jsx';
 import Privacy from './pages/DataPrivacyNotice.jsx';
 import Create from './pages/Create.jsx';
+import Studentdb from './pages/Studentdb.jsx';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/create",
     element: <Create />,
+  },
+  {
+    path: "/studentdb",
+    element: <Studentdb />,
   },
 ]);
 

@@ -19,6 +19,11 @@ const Create = () => {
     alert("Application successfully created!");
   };
 
+  const handleLogout = () => {
+    alert("You have logged out.");
+    // Implement actual logout functionality here (e.g., clear tokens, redirect)
+  };
+
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-gray-100"
@@ -31,12 +36,17 @@ const Create = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-[#081708]/80 flex items-center justify-center z-10"></div>
       <div className="w-full max-w-3xl bg-white p-8 shadow-lg px-[50px] rounded-lg z-30">
         {/* Header Section */}
-        <h1 className="text-3xl font-extrabold text-[#C61A01] text-center mb-4">
-          Admission Application
-        </h1>
-        <h2 className="text-xl font-bold text-gray-700 text-center mb-8">
-          Computer Studies Department - First Semester, 2025-2026
-        </h2>
+        <div className="flex justify-between items-center mb-4">
+          <div>
+            <h1 className="text-3xl font-extrabold text-[#C61A01] text-center mb-2">
+              Admission Application
+            </h1>
+            <h2 className="text-xl font-bold text-gray-700 text-center">
+              Computer Studies Department - First Semester, 2025-2026
+            </h2>
+          </div>
+          
+        </div>
 
         {/* Question Section */}
         <div className="mb-6">
@@ -175,7 +185,14 @@ const Create = () => {
         )}
 
         {/* Action Buttons */}
-        <div className="flex justify-end">
+        
+        <div className="flex justify-end gap-5">
+        <button
+            className="px-4 py-2 bg-[#C61A01] text-white font-bold rounded-lg focus:outline-none"
+            onClick={handleLogout}
+          >
+            Log Out
+          </button>
           <button
             className={`px-6 py-2 ${
               preferredProgram

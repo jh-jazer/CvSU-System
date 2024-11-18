@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from '../assets/university-logo.png';
 import StudentImage from '../assets/student.jpg';
 import TopNav from '../components/Topnav'; // Import the TopNav component
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -55,6 +56,8 @@ const Login = () => {
               />
             </div>
 
+            <Link
+            to="/studentdb">
             {/* Submit Button */}
             <button
               type="submit"
@@ -62,6 +65,7 @@ const Login = () => {
             >
               Log In
             </button>
+            </Link>
           </form>
 
           {/* Forgot Password */}
