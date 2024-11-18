@@ -13,7 +13,7 @@ const Hero = () => {
           alt="Laya"
         />
 
-        +-
+        <div className="absolute top-0 left-0 w-full h-full bg-[#081708]/80 flex items-center justify-center z-10">
           <div className="text-center text-white space-y-6">
             <img src={Logo} alt="University Logo" className="w-32 h-32 mx-auto hidden sm:block " />
             <h1 className="text-4xl font-bold text-[#c5ffdf]">CvSU BACOOR WEBSITE</h1>
