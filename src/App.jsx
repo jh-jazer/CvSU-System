@@ -9,7 +9,6 @@ import Contact from './components/Contact'
 
 function App() {
   const homeRef = useRef(null)
-
   const aboutRef = useRef(null)
   const newsRef = useRef(null)
   const contactRef = useRef(null)
@@ -18,13 +17,11 @@ function App() {
     <div>
       <Sidenav
         homeRef={homeRef}
-      
         aboutRef={aboutRef}
         newsRef={newsRef}
         contactRef={contactRef}
       />
       <div ref={homeRef}><Hero /></div>
-    
       <div ref={aboutRef}><About /></div>
       <div ref={newsRef}><News /></div>
       <div ref={contactRef}><Contact /></div>
