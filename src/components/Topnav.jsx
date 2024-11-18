@@ -14,28 +14,7 @@ const TopNav = () => {
           
         </div>
 
-        {/* Navigation Links (optional) */}
-        <div className="hidden md:flex space-x-6">
-          <a
-            href="/"
-            className="text-gray-700 hover:text-[#C61A01] font-medium transition"
-          >
-            Home
-          </a>
-          <a
-            href="#about"
-            className="text-gray-700 hover:text-[#C61A01] font-medium transition"
-          >
-            About
-          </a>
-          <a
-            href="#contact"
-            className="text-gray-700 hover:text-[#C61A01] font-medium transition"
-          >
-            Contact
-          </a>
-        </div>
-      </div>
+        
     </nav>
   );
 };
