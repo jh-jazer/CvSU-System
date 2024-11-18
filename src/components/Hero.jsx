@@ -13,7 +13,7 @@ const Hero = () => {
           alt="Laya"
         />
 
-        <div className="absolute top-0 left-0 w-full h-full bg-[#081708]/80 flex items-center justify-center z-10">
+        +-
           <div className="text-center text-white space-y-6">
             <img src={Logo} alt="University Logo" className="w-32 h-32 mx-auto hidden sm:block " />
             <h1 className="text-4xl font-bold text-[#c5ffdf]">CvSU BACOOR WEBSITE</h1>
@@ -26,19 +26,24 @@ const Hero = () => {
                 className="bg-black bg-opacity-40 rounded-lg shadow-lg p-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
               >
                 <h2 className=" text-2xl sm:text-3xl text-[#C61A01] font-semibold text-center">Log In</h2>
-                <p className="text-center text-[15px] text-[#c5ffdf] hidden sm:block mt-3 text-sm">Already a student? Access your account and manage your profile.</p>
+                <p className="text-center text-[15px] text-[#c5ffdf] hidden sm:block mt-3 text-sm">Already have an account? Access your account and manage your profile.</p>
               </Link>
 
               {/* Apply Panel */}
-              <div className="bg-black bg-opacity-40 rounded-lg shadow-lg p-6 hover:bg-opacity-60 transition duration-300 cursor-pointer">
+              <Link
+                to="/apply"
+                className="bg-black bg-opacity-40 rounded-lg shadow-lg p-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
+              >
                 <h2 className=" text-2xl sm:text-3xl text-[#C61A01] font-semibold text-center">Apply</h2>
                 <p className="text-center text-[15px] text-[#c5ffdf] hidden sm:block mt-3 text-sm">New Enrolee? Transferee? Start your application for new courses or programs.</p>
+              </Link>
+
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+   
   );
 };
 
