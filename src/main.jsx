@@ -7,6 +7,9 @@ import Apply from './pages/Apply.jsx';
 import Privacy from './pages/DataPrivacyNotice.jsx';
 import Create from './pages/Create.jsx';
 import Studentdb from './pages/Studentdb.jsx';
+import Courses from "./StudentdbPages/Courses.jsx";
+import Notifications from "./StudentdbPages/Notifications.jsx";
+import Settings from "./StudentdbPages/Settings.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 
@@ -34,6 +37,20 @@ const router = createBrowserRouter([
   {
     path: "/studentdb",
     element: <Studentdb />,
+    children: [
+      {
+        path: "courses",
+        element: <Courses />, // Component to render when /studentdb/courses is visited
+      },
+      {
+        path: "notifications",
+        element: <Notifications />, // Component for /studentdb/notifications
+      },
+      {
+        path: "settings",
+        element: <Settings />, // Component for /studentdb/settings
+      },
+    ],
   },
 ]);
 
