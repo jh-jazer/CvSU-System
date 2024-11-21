@@ -23,7 +23,7 @@ const Hero = () => {
               {/* Log In Panel */}
               <Link
                 to="/login"
-                className="bg-white/90 rounded-lg shadow-lg p-3 pb-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
+                className="bg-white/90 rounded-lg shadow-lg p-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
               >
                 <h2 className=" text-2xl sm:text-3xl font-bold text-[#C61A01] text-center">LOGIN</h2>
                 <p className="text-center text-[15px] text-[#000000] hidden sm:block mt-3 text-sm">Already have an account? Access your account and manage your profile.</p>
@@ -32,7 +32,7 @@ const Hero = () => {
               {/* Apply Panel */}
               <Link
                 to="/apply"
-                className="bg-white/90 rounded-lg shadow-lg p-3 pb-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
+                className="bg-white/90 rounded-lg shadow-lg p-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
               >
                 <h2 className=" text-2xl sm:text-3xl text-[#C61A01] font-bold text-center">APPLY</h2>
                 <p className="text-center text-[15px] text-[#000000] hidden sm:block mt-3 text-sm">New Enrolee? Transferee? Start your application for new courses or programs.</p>

@@ -20,13 +20,13 @@ const About = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative pt-2 px-4 sm:px-[140px] z-20">
+      <div className="relative py-8 px-4 sm:px-[140px] z-20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-[#092919] mb-6">ABOUT</h2>
 
           <div className="space-y-4">
             {/* Mission and Vision Section */}
-            <div className="transition-transform transform hover:scale-105 hover:shadow-xl p-5 bg-[#ffffff] rounded-lg shadow-md mx-2 sm:mx-4 max-h-[200px] sm:max-h-[400px] overflow-y-scroll scrollbar-custom">
+            <div className="transition-transform transform hover:scale-105 hover:shadow-xl p-6 bg-[#ffffff] rounded-lg shadow-md mx-2 sm:mx-4 max-h-[200px] sm:max-h-[400px] overflow-y-scroll scrollbar-custom">
               <h2 className="text-xl sm:text-2xl font-semibold text-[#C61A01]">Mission</h2>
               <p className="text-gray-600 mt-2">
                 Cavite State University shall provide excellent, equitable, and relevant educational opportunities in the arts, sciences, and technology through quality instruction and responsive research and development activities. It shall produce professional, skilled, and morally upright individuals for global competitiveness.
