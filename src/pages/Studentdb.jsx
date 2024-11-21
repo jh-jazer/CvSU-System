@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import {
   FaChartBar,
+  FaUserCircle,
   FaBook,
   FaBell,
   FaCog,
@@ -35,11 +36,17 @@ const StudentDashboard = () => {
                 to="profile"
                 className="px-4 py-2 flex items-center space-x-3 hover:bg-gray-700 rounded-lg cursor-pointer"
               >
+<<<<<<< HEAD
+                <FaUserCircle />
+                <span>Profile</span>
+              </Link>
+=======
                 <FaUser />
                 <span>Profile</span>
               </Link>
             </li>
             <li>
+>>>>>>> 8ba5e1f17060fba6a8eb9fcf405656b802e72cb9
               <Link
                 to="courses"
                 className="px-4 py-2 flex items-center space-x-3 hover:bg-gray-700 rounded-lg cursor-pointer"
