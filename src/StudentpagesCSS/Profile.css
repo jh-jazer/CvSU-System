@@ -1,0 +1,43 @@
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+  gap: 20px; /* Space between the form fields */
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+input, select {
+  padding: 8px;
+  font-size: 1rem;
+  width: 100%; /* Ensure input and select fields take up full column width */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[readonly], select[disabled] {
+  background-color: #f0f0f0; /* Make the fields appear slightly gray */
+  cursor: not-allowed;
+}
+
+h2 {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
