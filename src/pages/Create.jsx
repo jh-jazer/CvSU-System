@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Laya from "../assets/laya.png"; // Adjust the path based on your project structure
+import { Link } from 'react-router-dom';
 
 const Create = () => {
   const [applicantType, setApplicantType] = useState("");
@@ -9,14 +10,20 @@ const Create = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = () => {
-    if (seniorHighTrack && strand && !["stem", "ict"].includes(strand)) {
+    // Check if the applicant is from "academic" or "tech-voc" track
+    if (
+      ["shs", "grade12"].includes(applicantType) && // Only check for these type
+      !["stem", "ict"].includes(strand) // Ensure they choose either "stem" or "ict" strand
+    ) {
       setErrorMessage(
         "You must be a STEM or ICT student to choose the selected program."
       );
       return;
     }
+
     setErrorMessage("");
     alert("Application successfully created!");
+    
   };
 
   const handleLogout = () => {
@@ -34,9 +41,9 @@ const Create = () => {
       }}
     >
       <div className="absolute top-0 left-0 w-full h-full bg-[#081708]/80 flex items-center justify-center z-10"></div>
-      <div className="w-full max-w-3xl bg-white p-8 shadow-lg px-[50px] rounded-lg z-30">
+      <div className="w-full max-w-3xl bg-white p-8 shadow-lg rounded-lg z-30">
         {/* Header Section */}
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-center items-center mb-6">
           <div>
             <h1 className="text-3xl font-extrabold text-[#C61A01] text-center mb-2">
               Admission Application
@@ -45,7 +52,6 @@ const Create = () => {
               Computer Studies Department - First Semester, 2025-2026
             </h2>
           </div>
-          
         </div>
 
         {/* Question Section */}
@@ -73,9 +79,7 @@ const Create = () => {
         </div>
 
         {/* Additional Questions */}
-        {["als", "foreign", "transferee", "bachelors"].includes(
-          applicantType
-        ) && (
+        {["als", "foreign", "transferee", "bachelors"].includes(applicantType) && (
           <div className="mb-6">
             <p className="text-gray-700 text-lg font-semibold mb-2">
               Choose your preferred program:
@@ -154,6 +158,8 @@ const Create = () => {
                   </option>
                   <option value="ict">ICT</option>
                   <option value="he">Home Economics</option>
+                  <option value="ia">Industrial Arts</option>
+                  <option value="afa">Agri-Fishery Arts</option>
                 </select>
               </div>
             )}
@@ -185,14 +191,15 @@ const Create = () => {
         )}
 
         {/* Action Buttons */}
-        
-        <div className="flex justify-end gap-5">
-        <button
+        <div className="flex justify-center gap-5">
+          <button
             className="px-4 py-2 bg-[#C61A01] text-white font-bold rounded-lg focus:outline-none"
             onClick={handleLogout}
           >
             Log Out
           </button>
+          <Link
+          to='/createapplication'>
           <button
             className={`px-6 py-2 ${
               preferredProgram
@@ -204,6 +211,7 @@ const Create = () => {
           >
             Create Application
           </button>
+          </Link>
         </div>
       </div>
     </div>

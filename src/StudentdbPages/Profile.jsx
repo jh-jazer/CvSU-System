@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 // Import the CSS file for styling
 import '../StudentpagesCSS/Profile.css'
@@ -119,3 +120,16 @@ const Profile = () => {
 };
 
 export default Profile;
+=======
+const Profile = () => {
+    return (
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h1 className="text-2xl font-bold mb-4">Profile</h1>
+        <p>This is the Profile section.</p>
+      </div>
+    );
+  };
+  
+  export default Profile;
+  
+>>>>>>> 8ba5e1f17060fba6a8eb9fcf405656b802e72cb9
