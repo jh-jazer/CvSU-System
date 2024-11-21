@@ -5,6 +5,7 @@ import {
   FaBell,
   FaCog,
   FaSignOutAlt,
+  FaUser,
 } from "react-icons/fa";
 
 const StudentDashboard = () => {
@@ -29,6 +30,15 @@ const StudentDashboard = () => {
         </div>
         <nav className="flex-1 mt-4">
           <ul className="space-y-2">
+            <li>
+              <Link
+                to="profile"
+                className="px-4 py-2 flex items-center space-x-3 hover:bg-gray-700 rounded-lg cursor-pointer"
+              >
+                <FaUser />
+                <span>Profile</span>
+              </Link>
+            </li>
             <li>
               <Link
                 to="courses"

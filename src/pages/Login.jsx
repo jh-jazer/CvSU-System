@@ -16,7 +16,7 @@ const Login = () => {
         style={{ backgroundImage: `url(${StudentImage})` }}
       >
         {/* Login Card */}
-        <div className="w-full max-w-md p-8 bg-white bg-opacity-90 shadow-lg rounded-lg">
+        <div className="w-full max-w-md p-8 bg-white bg-opacity-95 shadow-lg rounded-lg">
           {/* Header */}
           <link rel="stylesheet" href="" />
           <div className="flex flex-col items-center">
@@ -61,7 +61,7 @@ const Login = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-2 text-white bg-[#C61A01] rounded-lg hover:bg-[#C61A01]/90 focus:outline-none focus:ring-2 focus:ring-[#C61A01]"
+              className="w-full py-2 mt-6 text-white bg-[#C61A01] rounded-lg hover:bg-[#C61A01]/90 focus:outline-none focus:ring-2 focus:ring-[#C61A01]"
             >
               Log In
             </button>
