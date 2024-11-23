@@ -70,10 +70,20 @@ const Login = () => {
 
           {/* Forgot Password */}
           <div className="text-center">
-            <a href="#" className="text-sm text-[#C61A01] hover:underline">
+            <a href="#" className="text-sm text-[#C61A01] p-2 hover:underline">
               Forgot password?
             </a>
           </div>
+
+          <Link
+          to='/register'>
+            {/* Forgot Password */}
+            <div className="text-center">
+            <a href="#" className="text-sm text-[#C61A01] p-2 hover:underline">
+              Don't have an Account? Register
+            </a>
+          </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+// Import the CSS file for styling
+import '../StudentpagesCSS/Profile.css';
 
 const Profile = () => {
-  const [formData] = useState({
+  const [formData, setFormData] = useState({
     givenName: 'John',
     familyName: 'Doe',
     middleName: '',
@@ -22,173 +24,102 @@ const Profile = () => {
   });
 
   return (
-    <div className="bg-gray-100 py-8">
-      <form className="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <div className="profile-container">
+      <form className="profile-form">
         {/* Personal Information Section */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6">Personal Information*</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div>
-              <label className="block font-medium mb-1">Given Name*</label>
-              <input
-                type="text"
-                value={formData.givenName}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+        <div className="section">
+          <h2 className="section-title">Personal Information*</h2>
+          <div className="form-grid">
+            
+            <div className="form-group">
+              <label>Given Name*</label>
+              <input type="text" name="givenName" value={formData.givenName} readOnly />
             </div>
-            <div>
-              <label className="block font-medium mb-1">Middle Name (Not Applicable)</label>
-              <input
-                type="text"
-                value={formData.middleName}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+            <div className="form-group">
+              <label>Middle Name (Not Applicable)</label>
+              <input type="text" name="middleName" value={formData.middleName} readOnly />
             </div>
-            <div>
-              <label className="block font-medium mb-1">Family Name*</label>
-              <input
-                type="text"
-                value={formData.familyName}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+            <div className="form-group">
+              <label>Family Name*</label>
+              <input type="text" name="familyName" value={formData.familyName} readOnly />
             </div>
-            <div>
-              <label className="block font-medium mb-1">Suffix (Optional)</label>
-              <input
-                type="text"
-                value={formData.suffix}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+            <div className="form-group">
+              <label>Suffix (Optional)</label>
+              <input type="text" name="suffix" value={formData.suffix} readOnly />
             </div>
-            <div>
-              <label className="block font-medium mb-1">Sex</label>
-              <select
-                value={formData.sexAtBirth}
-                disabled
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              >
+            <div className="form-group">
+              <label>Sex </label>
+              <select name="sexAtBirth" value={formData.sexAtBirth} disabled>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
             </div>
-            <div>
-              <label className="block font-medium mb-1">Date of Birth</label>
-              <input
-                type="date"
-                value={formData.dateOfBirth}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+            <div className="form-group">
+              <label>Date of birth</label>
+              <input type="date" name="dateOfBirth" value={formData.dateOfBirth} readOnly />
             </div>
-            <div>
-              <label className="block font-medium mb-1">Contact Number</label>
-              <input
-                type="text"
-                value={formData.contactNumber}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+            <div className="form-group">
+              <label>Contact Number</label>
+              <input type="text" name="contactNumber" value={formData.contactNumber} readOnly />
             </div>
-            <div>
-              <label className="block font-medium mb-1">Civil Status</label>
-              <select
-                value={formData.civilStatus}
-                disabled
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              >
+            <div className="form-group">
+              <label>Civil Status</label>
+              <select name="civilStatus" value={formData.civilStatus} disabled>
                 <option value="Single">Single</option>
                 <option value="Married">Married</option>
                 <option value="Divorced">Divorced</option>
                 <option value="Widowed">Widowed</option>
               </select>
             </div>
-            <div>
-              <label className="block font-medium mb-1">Religion</label>
-              <input
-                type="text"
-                value={formData.religion}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+            <div className="form-group">
+              <label>Religion</label>
+              <input type="text" name="religion" value={formData.religion} readOnly />
             </div>
           </div>
         </div>
 
         {/* Residential Address Section */}
-        <div>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6">Residential Address*</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div>
-              <label className="block font-medium mb-1">House Number*</label>
-              <input
-                type="text"
-                value={formData.houseNumber}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+        <div className="section">
+          <h2 className="section-title">Residential Address*</h2>
+          <div className="form-grid">
+            <div className="form-group">
+              <label>House Number*</label>
+              <input type="text" name="houseNumber" value={formData.houseNumber} readOnly />
             </div>
-            <div>
-              <label className="block font-medium mb-1">Street/Subdivision Address*</label>
-              <input
-                type="text"
-                value={formData.streetAddress}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+            <div className="form-group">
+              <label>Street/Subdivision Address*</label>
+              <input type="text" name="streetAddress" value={formData.streetAddress} readOnly />
             </div>
-            <div>
-              <label className="block font-medium mb-1">Province</label>
-              <select
-                value={formData.province}
-                disabled
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              >
+            <div className="form-group">
+              <label>Province</label>
+              <select name="province" value={formData.province} disabled>
                 <option value="Metro Manila">Metro Manila</option>
+                {/* Add more provinces as needed */}
               </select>
             </div>
-            <div>
-              <label className="block font-medium mb-1">Municipality</label>
-              <select
-                value={formData.municipality}
-                disabled
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              >
+            <div className="form-group">
+              <label>Municipality</label>
+              <select name="municipality" value={formData.municipality} disabled>
                 <option value="City of Las Piñas">City of Las Piñas</option>
+                {/* Add more municipalities as needed */}
               </select>
             </div>
-            <div>
-              <label className="block font-medium mb-1">Barangay</label>
-              <select
-                value={formData.barangay}
-                disabled
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              >
+            <div className="form-group">
+              <label>Barangay</label>
+              <select name="barangay" value={formData.barangay} disabled>
                 <option value="Pamplona Tres">Pamplona Tres</option>
+                {/* Add more barangays as needed */}
               </select>
             </div>
-            <div>
-              <label className="block font-medium mb-1">Zip Code</label>
-              <input
-                type="text"
-                value={formData.zipCode}
-                readOnly
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              />
+            <div className="form-group">
+              <label>Zip Code</label>
+              <input type="text" name="zipCode" value={formData.zipCode} readOnly />
             </div>
-            <div>
-              <label className="block font-medium mb-1">Region</label>
-              <select
-                value={formData.region}
-                disabled
-                className="w-full px-4 py-2 border rounded-md bg-gray-50 text-gray-600"
-              >
-                <option value="National Capital Region (NCR)">
-                  National Capital Region (NCR)
-                </option>
+            <div className="form-group">
+              <label>Region</label>
+              <select name="region" value={formData.region} disabled>
+                <option value="National Capital Region (NCR)">National Capital Region (NCR)</option>
+                {/* Add more regions as needed */}
               </select>
             </div>
           </div>

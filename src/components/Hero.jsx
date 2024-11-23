@@ -19,11 +19,11 @@ const Hero = () => {
             <h1 className="text-4xl font-bold text-[#c5ffdf]">CvSU BACOOR WEBSITE</h1>
             <p className="text-lg px-10 text-[#c5ffdf] ">Register for courses, manage your profile, and access academic information tailored for the Department of Computer Studies.</p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 h-[100px] px-10 md:px-[20%] gap-6 mt-10 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 h-[100px] px-10 md:px-[20%] gap-6 mt-10 my-ce w-full">
               {/* Log In Panel */}
               <Link
                 to="/login"
-                className="bg-white/90 rounded-lg shadow-lg p-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
+                className="bg-white/90 rounded-lg shadow-lg p-3 pb-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
               >
                 <h2 className=" text-2xl sm:text-3xl font-bold text-[#C61A01] text-center">LOGIN</h2>
                 <p className="text-center text-[15px] text-[#000000] hidden sm:block mt-3 text-sm">Already have an account? Access your account and manage your profile.</p>
@@ -32,7 +32,7 @@ const Hero = () => {
               {/* Apply Panel */}
               <Link
                 to="/apply"
-                className="bg-white/90 rounded-lg shadow-lg p-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
+                className="bg-white/90 rounded-lg shadow-lg p-3 pb-6 hover:bg-opacity-60 transition duration-300 cursor-pointer"
               >
                 <h2 className=" text-2xl sm:text-3xl text-[#C61A01] font-bold text-center">APPLY</h2>
                 <p className="text-center text-[15px] text-[#000000] hidden sm:block mt-3 text-sm">New Enrolee? Transferee? Start your application for new courses or programs.</p>
