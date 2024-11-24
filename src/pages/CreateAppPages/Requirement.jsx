@@ -1,74 +1,103 @@
-import React from "react";
+import React, { useState } from 'react';
+import '../CreateApppagesCSS/Requirement.css'
 import { Link } from "react-router-dom";
+const Requirement = () => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [requirements, setRequirements] = useState([]);
+  const [newRequirement, setNewRequirement] = useState('');
+  const [newImage, setNewImage] = useState(null);
 
-const Details = ({ applicantType, seniorHighTrack, strand, preferredProgram }) => {
+  const handleAddRequirement = (e) => {
+    e.preventDefault();
+    if (newRequirement.trim() !== '' && newImage) {
+      const requirementData = {
+        name: newRequirement,
+        image: URL.createObjectURL(newImage), // Create an object URL for the uploaded image
+      };
+      setRequirements((prevRequirements) => [...prevRequirements, requirementData]);
+      setNewRequirement(''); // Clear the input field after adding
+      setNewImage(null); // Clear the image after adding
+    }
+  };
+
+  const handleDeleteRequirement = (index) => {
+    const updatedRequirements = requirements.filter((_, i) => i !== index);
+    setRequirements(updatedRequirements);
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      setNewImage(file); // Store the selected image file
+    } else {
+      alert('Please select a valid image file');
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-     
-      <div className="w-full max-w-2xl bg-white p-8 shadow-lg rounded-lg">
-        {/* Header Section */}
-        <div className="text-center mb-6">
-          <h1 className="text-3xl font-extrabold text-[#C61A01]">
-            Application Details
-          </h1>
-          <h2 className="text-lg text-gray-700">
-            Please review your application information.
-          </h2>
+    <div className="requirement-form-container">
+      <h2 className='text-3xl font-extrabold flex justify-center items-center'>Upload Requirements</h2>
+      <form onSubmit={handleAddRequirement}>
+        <div className="form-group">
+          <label htmlFor="requirementImage">Upload Document Image</label>
+          <input
+            type="file"
+            id="requirementImage"
+            name="requirementImage"
+            accept="image/*"
+            onChange={handleImageChange}
+            required
+          />
         </div>
 
-        {/* Application Details */}
-        <div className="mb-6">
-          <p className="text-gray-700 text-lg font-semibold mb-2">
-            Applicant Type:
-          </p>
-          <p className="text-gray-900 text-lg">{applicantType || "Not provided"}</p>
-        </div>
+        <button type="submit" className="submit-btn">Add Requirement</button>
+      </form>
 
-        {seniorHighTrack && (
-          <div className="mb-6">
-            <p className="text-gray-700 text-lg font-semibold mb-2">
-              Senior High Track:
-            </p>
-            <p className="text-gray-900 text-lg">
-              {seniorHighTrack || "Not provided"}
-            </p>
-          </div>
-        )}
-
-        {strand && (
-          <div className="mb-6">
-            <p className="text-gray-700 text-lg font-semibold mb-2">Strand:</p>
-            <p className="text-gray-900 text-lg">{strand || "Not provided"}</p>
-          </div>
-        )}
-
-        <div className="mb-6">
-          <p className="text-gray-700 text-lg font-semibold mb-2">
-            Preferred Program:
-          </p>
-          <p className="text-gray-900 text-lg">
-            {preferredProgram || "Not provided"}
-          </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex justify-between">
-          <Link
-            to="/create"
-            className="px-4 py-2 bg-gray-300 text-gray-800 font-bold rounded-lg"
-          >
-            Edit Application
-          </Link>
+      <div className="requirements-list">
+        <h3>Required Documents List</h3>
+        <ul>
+          {requirements.map((requirement, index) => (
+            <li key={index} className="requirement-item">
+              <div>
+                <strong>{requirement.name}</strong>
+                {requirement.image && (
+                  <img
+                    src={requirement.image}
+                    alt={requirement.name}
+                    style={{ width: '100px', height: 'auto', marginLeft: '10px' }}
+                  />
+                )}
+              </div>
+              <button
+                type="button"
+                className="delete-btn"
+                onClick={() => handleDeleteRequirement(index)}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div className="flex justify-end gap-5 mb-5 mx-5">
+        <button
+          className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
+          disabled={isButtonDisabled}
+          onClick={() => alert("Application submitted successfully!")}
+        >
+          Prev
+        </button>
+        <Link to="/createapplication/appointment">
           <button
-            className="px-6 py-2 bg-[#C61A01] text-white font-bold rounded-lg focus:outline-none"
-            onClick={() => alert("Application submitted successfully!")}
+            className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none"
           >
-            Submit Application
+            Next
           </button>
-        </div>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Details;
+export default Requirement;

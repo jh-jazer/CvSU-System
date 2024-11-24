@@ -1,74 +1,99 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+const Appointment = () => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [appointments, setAppointments] = useState([]);
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
 
-const Details = ({ applicantType, seniorHighTrack, strand, preferredProgram }) => {
+  const handleAddAppointment = (e) => {
+    e.preventDefault();
+    if (date && time) {
+      const appointment = {
+        date,
+        time,
+      };
+      setAppointments((prevAppointments) => [...prevAppointments, appointment]);
+      setDate(''); // Clear the date input after adding
+      setTime(''); // Clear the time input after adding
+    } else {
+      alert("Please select both a date and a time for the appointment.");
+    }
+  };
+
+  const handleDeleteAppointment = (index) => {
+    const updatedAppointments = appointments.filter((_, i) => i !== index);
+    setAppointments(updatedAppointments);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-     
-      <div className="w-full max-w-2xl bg-white p-8 shadow-lg rounded-lg">
-        {/* Header Section */}
-        <div className="text-center mb-6">
-          <h1 className="text-3xl font-extrabold text-[#C61A01]">
-            Application Details
-          </h1>
-          <h2 className="text-lg text-gray-700">
-            Please review your application information.
-          </h2>
+    <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">
+    <div className="appointment-form-container">
+      <h2 className='text-3xl font-extrabold flex justify-center items-center'>Schedule an Appointment</h2>
+      <form onSubmit={handleAddAppointment}>
+        <div className="form-group">
+          <label htmlFor="appointmentDate">Select Date</label>
+          <input
+            type="date"
+            id="appointmentDate"
+            name="appointmentDate"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
         </div>
 
-        {/* Application Details */}
-        <div className="mb-6">
-          <p className="text-gray-700 text-lg font-semibold mb-2">
-            Applicant Type:
-          </p>
-          <p className="text-gray-900 text-lg">{applicantType || "Not provided"}</p>
+        <div className="form-group">
+          <label htmlFor="appointmentTime">Select Time</label>
+          <input
+            type="time"
+            id="appointmentTime"
+            name="appointmentTime"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            required
+          />
         </div>
 
-        {seniorHighTrack && (
-          <div className="mb-6">
-            <p className="text-gray-700 text-lg font-semibold mb-2">
-              Senior High Track:
-            </p>
-            <p className="text-gray-900 text-lg">
-              {seniorHighTrack || "Not provided"}
-            </p>
-          </div>
-        )}
+        <button type="submit" className="submit-btn">Add Appointment</button>
+      </form>
 
-        {strand && (
-          <div className="mb-6">
-            <p className="text-gray-700 text-lg font-semibold mb-2">Strand:</p>
-            <p className="text-gray-900 text-lg">{strand || "Not provided"}</p>
-          </div>
-        )}
-
-        <div className="mb-6">
-          <p className="text-gray-700 text-lg font-semibold mb-2">
-            Preferred Program:
-          </p>
-          <p className="text-gray-900 text-lg">
-            {preferredProgram || "Not provided"}
-          </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex justify-between">
-          <Link
-            to="/create"
-            className="px-4 py-2 bg-gray-300 text-gray-800 font-bold rounded-lg"
-          >
-            Edit Application
-          </Link>
+      <div className="appointments-list">
+        <h3>Scheduled Appointments</h3>
+        <ul>
+          {appointments.map((appointment, index) => (
+            <li key={index} className="appointment-item">
+              <span>{`${appointment.date} at ${appointment.time}`}</span>
+              <button
+                type="button"
+                className="delete-btn"
+                onClick={() => handleDeleteAppointment(index)}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div className="flex justify-end gap-5 mb-5 mx-5">
+        <button
+          className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
+          disabled={isButtonDisabled}
+          onClick={() => alert("Application submitted successfully!")}
+        >
+          Prev
+        </button>
+        <Link to="/createapplication/details">
           <button
-            className="px-6 py-2 bg-[#C61A01] text-white font-bold rounded-lg focus:outline-none"
-            onClick={() => alert("Application submitted successfully!")}
+            className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none"
           >
-            Submit Application
+            Submit
           </button>
-        </div>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default Details;
+export default Appointment;
