@@ -80,7 +80,7 @@ const router = createBrowserRouter([
         element: <Education />, // Component for /studentdb/notifications
       },
       {
-        path: "requirement",
+        path: "requirements",
         element: <Requirement />, // Component for /studentdb/settings
       },
       {
