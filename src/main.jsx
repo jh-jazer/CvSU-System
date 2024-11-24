@@ -1,19 +1,30 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { AppProvider } from './contexts/AppContext.jsx';
 import './index.css'
 import App from './App.jsx'
 import Login from './pages/Login.jsx';
 import Apply from './pages/Apply.jsx';
 import Privacy from './pages/DataPrivacyNotice.jsx';
 import Create from './pages/Create.jsx';
+
 import Studentdb from './pages/Studentdb.jsx';
-import Profile from './StudentdbPages/Profile.jsx';
-import Courses from "./StudentdbPages/Courses.jsx";
-import Enroll from "./StudentdbPages/Enroll.jsx";
-import Home from "./StudentdbPages/Home.jsx";
-import Notifications from "./StudentdbPages/Notifications.jsx";
-import Settings from "./StudentdbPages/Settings.jsx";
+import Profile from './pages/StudentdbPages/Profile.jsx';
+import Courses from "./pages/StudentdbPages/Courses.jsx";
+import Enroll from "./pages/StudentdbPages/Enroll.jsx";
+import Home from "./pages/StudentdbPages/Home.jsx";
+import Notifications from "./pages/StudentdbPages/Notifications.jsx";
+import Settings from "./pages/StudentdbPages/Settings.jsx";
+
 import CreateApplication from "./pages/CreateApplication.jsx";
+import Details from './pages/CreateAppPages/Details.jsx';
+import Personal from './pages/CreateAppPages/Personal.jsx';
+import Contact from './pages/CreateAppPages/Contact.jsx';
+import Family from './pages/CreateAppPages/Family.jsx';
+import Education from './pages/CreateAppPages/Education.jsx';
+import Requirement from './pages/CreateAppPages/Requirement.jsx';
+import Appointment from './pages/CreateAppPages/Appointment.jsx';
+
 import Register from './pages/Register.jsx';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -44,10 +55,40 @@ const router = createBrowserRouter([
     element: <Create />,
   },
   {
-    path: "/CreateApplication",
+    path: "/createapplication",
     element: <CreateApplication />,
+    children: [
+      {
+        index: true, // Default route for /studentdb
+        path: "details",
+        element: <Details />, // Render the Home component by default
+      },
+      {
+        path: "personal",
+        element: <Personal />, // Component to render when /studentdb/courses is visited
+      },
+      {
+        path: "contact",
+        element: <Contact />, // Component to render when /studentdb/courses is visited
+      },
+      {
+        path: "family",
+        element: <Family />, // Component to render when /studentdb/courses is visited
+      },
+      {
+        path: "education",
+        element: <Education />, // Component for /studentdb/notifications
+      },
+      {
+        path: "requirement",
+        element: <Requirement />, // Component for /studentdb/settings
+      },
+      {
+        path: "appointment",
+        element: <Appointment />, // Component for /studentdb/settings
+      },
+    ],
   },
-
   {
     path: "/studentdb",
     element: <Studentdb />,
@@ -81,9 +122,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-  createRoot(document.getElementById('root')).render(
-    <StrictMode>
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <AppProvider>
       <RouterProvider router={router} />
-    </StrictMode>
-  );
-  
+    </AppProvider>
+  </StrictMode>
+);

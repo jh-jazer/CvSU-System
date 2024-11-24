@@ -1,20 +1,76 @@
-import React, { useState } from "react";
-import AdmissionNav from '../components/AdmissionNav';
-import Laya from "../assets/laya.png"; // Adjust the path based on your project structure
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import AdmissionNav from "../components/AdmissionNav";
+import { useAppContext } from "../contexts/AppContext";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import Laya from "../assets/laya.png";
 
 const Create = () => {
-  const [applicantType, setApplicantType] = useState("");
-  const [seniorHighTrack, setSeniorHighTrack] = useState("");
-  const [strand, setStrand] = useState("");
-  const [preferredProgram, setPreferredProgram] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const {
+    applicantType,
+    setApplicantType,
+    seniorHighTrack,
+    setSeniorHighTrack,
+    strand,
+    setStrand,
+    preferredProgram,
+    setPreferredProgram,
+  } = useAppContext();
 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  const navigate = useNavigate(); // Hook to navigate programmatically
+
+    // Disable the submit button based on form state
+    useEffect(() => {
+      if (applicantType && preferredProgram) {
+        setIsButtonDisabled(false);
+      } else {
+        setIsButtonDisabled(true);
+      }
+    }, [applicantType, preferredProgram]);
+
+
+  // Config for strands and programs
+  const strandOptions = {
+    "Academic": [
+      { value: "stem", label: "Science, Technology, Engineering, and Mathematics (STEM)" },
+      { value: "abm", label: "Accountancy, Business, and Management (ABM)" },
+      { value: "humss", label: "Humanities and Social Sciences (HUMSS)" },
+      { value: "gas", label: "General Academic Strand (GAS)" },
+    ],
+    "Technical-Vocational": [
+      { value: "afa", label: "Agri-Fishery Arts (AFA)" },
+      { value: "he", label: "Home Economics (HE)" },
+      { value: "ia", label: "Industrial Arts (IA)" },
+      { value: "ict", label: "Information and Communications Technology (ICT)" },
+    ],
+    "Arts and Design": [
+      { value: "ad", label: "Arts and Design" },
+    ],
+    "Sports": [
+      { value: "sports", label: "Sports" },
+    ],
+  };
+
+ const programOptions = {
+    stem: ["Bachelor of Science in Computer Science.", "Bachelor of Science in Information Technology"],
+    abm: ["Bachelor of Science in Computer Science.", "Bachelor of Science in Information Technology"],
+    humss: ["Bachelor of Science in Computer Science.", "Bachelor of Science in Information Technology"],
+    gas: ["Bachelor of Science in Computer Science.", "Bachelor of Science in Information Technology"],
+    afa: ["Bachelor of Science in Computer Science.", "Bachelor of Science in Information Technology"],
+    he: ["Bachelor of Science in Computer Science.", "Bachelor of Science in Information Technology"],
+    ia: ["Bachelor of Science in Computer Science.e", "Bachelor of Science in Information Technology"],
+    ict: ["Bachelor of Science in Computer Science.", "Bachelor of Science in Information Technology"],
+    ad: ["Bachelor of Science in Computer Science.", "Bachelor of Science in Information Technology"], // Programs for Arts and Design
+    sports: ["Bachelor of Science in Computer Science.", "Bachelor of Science in Information Technology"], // Programs for Sports
+  };
+
+  // Form Submission Handler
   const handleSubmit = () => {
-    // Check if the applicant is from "academic" or "tech-voc" track
     if (
-      ["shs", "grade12"].includes(applicantType) && // Only check for these type
-      !["stem", "ict"].includes(strand) // Ensure they choose either "stem" or "ict" strand
+      ["shs", "grade12"].includes(applicantType) &&
+      !["stem", "ict"].includes(strand)
     ) {
       setErrorMessage(
         "You must be a STEM or ICT student to choose the selected program."
@@ -24,18 +80,12 @@ const Create = () => {
 
     setErrorMessage("");
     alert("Application successfully created!");
-    
-  };
-
-  const handleLogout = () => {
-    alert("You have logged out.");
-    // Implement actual logout functionality here (e.g., clear tokens, redirect)
+    navigate("/createapplication/details"); // Redirect to details page upon successful submission
   };
 
   return (
-    
     <div
-      className="min-h-screen flex items-center justify-center bg-gray-100"
+      className="flex items-center justify-center min-h-screen bg-fixed bg-cover bg-center pb-[70px] pt-[70px]"
       style={{
         backgroundImage: `url(${Laya})`,
         backgroundSize: "cover",
@@ -43,9 +93,8 @@ const Create = () => {
       }}
     >
       <AdmissionNav user={null} />
-      <div className="absolute top-0 left-0 w-full h-full bg-[#081708]/80 flex items-center justify-center z-10"></div>
+      <div className="top-0 left-0 w-full h-full bg-[#081708]/80 flex fixed items-center justify-center z-10"></div>
       <div className="w-full max-w-3xl bg-white p-8 shadow-lg rounded-lg z-30">
-        {/* Header Section */}
         <div className="flex justify-center items-center mb-6">
           <div>
             <h1 className="text-3xl font-extrabold text-[#C61A01] text-center mb-2">
@@ -57,7 +106,7 @@ const Create = () => {
           </div>
         </div>
 
-        {/* Question Section */}
+        {/* Applicant Type Selection */}
         <div className="mb-6">
           <p className="text-gray-700 text-lg font-semibold mb-2">
             What type of applicant are you?
@@ -65,15 +114,17 @@ const Create = () => {
           <select
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C61A01] focus:border-transparent"
             value={applicantType}
-            onChange={(e) => setApplicantType(e.target.value)}
+            onChange={(e) => {
+              setApplicantType(e.target.value)
+              setPreferredProgram("");
+            }}
+          
           >
             <option value="" disabled>
               Choose a type of applicant
             </option>
             <option value="als">Alternative Learning System (ALS) Passer</option>
-            <option value="foreign">
-              Foreign Undergraduate Student Applicant
-            </option>
+            <option value="foreign">Foreign Undergraduate Student Applicant</option>
             <option value="shs">Senior High School Graduate</option>
             <option value="grade12">Currently Enrolled Grade 12 Student</option>
             <option value="bachelors">Bachelor's Degree Graduate</option>
@@ -81,7 +132,7 @@ const Create = () => {
           </select>
         </div>
 
-        {/* Additional Questions */}
+        {/* Preferred Program */}
         {["als", "foreign", "transferee", "bachelors"].includes(applicantType) && (
           <div className="mb-6">
             <p className="text-gray-700 text-lg font-semibold mb-2">
@@ -91,16 +142,21 @@ const Create = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C61A01] focus:border-transparent"
               value={preferredProgram}
               onChange={(e) => setPreferredProgram(e.target.value)}
+              
             >
               <option value="" disabled>
                 Select a program
               </option>
-              <option value="cs">BS Computer Science</option>
-              <option value="it">BS Information Technology</option>
+              {programOptions.stem.map((program, index) => (
+                <option key={index} value={program}>
+                  {program}
+                </option>
+              ))}
             </select>
           </div>
         )}
 
+        {/* SHS/Grade 12 Questions */}
         {["shs", "grade12"].includes(applicantType) && (
           <>
             <div className="mb-6">
@@ -113,64 +169,49 @@ const Create = () => {
                 onChange={(e) => {
                   setSeniorHighTrack(e.target.value);
                   setStrand("");
+                  setPreferredProgram("");
                 }}
               >
                 <option value="" disabled>
                   Select your track
                 </option>
-                <option value="academic">Academic Track</option>
-                <option value="tech-voc">Technical-Vocational Track</option>
-                <option value="sports">Sports</option>
-                <option value="arts-des">Arts and Design</option>
+                {Object.keys(strandOptions).map((track) => (
+                  <option key={track} value={track}>
+                    {track.replace("-", " ")}
+                  </option>
+                ))}
               </select>
             </div>
-
-            {seniorHighTrack === "academic" && (
-              <div className="mb-6">
-                <p className="text-gray-700 text-lg font-semibold mb-2">
-                  What is your strand?
-                </p>
-                <select
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C61A01] focus:border-transparent"
-                  value={strand}
-                  onChange={(e) => setStrand(e.target.value)}
-                >
-                  <option value="" disabled>
-                    Select a strand
-                  </option>
-                  <option value="stem">STEM</option>
-                  <option value="abm">ABM</option>
-                  <option value="humss">HUMSS</option>
-                  <option value="gas">GAS</option>
-                </select>
-              </div>
-            )}
-
-            {seniorHighTrack === "tech-voc" && (
-              <div className="mb-6">
-                <p className="text-gray-700 text-lg font-semibold mb-2">
-                  What is your strand?
-                </p>
-                <select
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C61A01] focus:border-transparent"
-                  value={strand}
-                  onChange={(e) => setStrand(e.target.value)}
-                >
-                  <option value="" disabled>
-                    Select a strand
-                  </option>
-                  <option value="ict">ICT</option>
-                  <option value="he">Home Economics</option>
-                  <option value="ia">Industrial Arts</option>
-                  <option value="afa">Agri-Fishery Arts</option>
-                </select>
-              </div>
-            )}
 
             {seniorHighTrack && (
               <div className="mb-6">
                 <p className="text-gray-700 text-lg font-semibold mb-2">
-                  Choose your preferred program:
+                  What is your strand?
+                </p>
+                <select
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C61A01] focus:border-transparent"
+                  value={strand}
+                  onChange={(e) => {
+                    setStrand(e.target.value);
+                    setPreferredProgram("");
+                  }}
+                >
+                  <option value="" disabled>
+                    Select a strand
+                  </option>
+                  {strandOptions[seniorHighTrack].map(({ value, label }) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            {strand && (
+              <div className="mb-6">
+                <p className="text-gray-700 text-lg font-semibold mb-2">
+                  What is your preferred program?
                 </p>
                 <select
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C61A01] focus:border-transparent"
@@ -180,8 +221,11 @@ const Create = () => {
                   <option value="" disabled>
                     Select a program
                   </option>
-                  <option value="cs">BS Computer Science</option>
-                  <option value="it">BS Information Technology</option>
+                  {programOptions[strand].map((program, index) => (
+                    <option key={index} value={program}>
+                      {program}
+                    </option>
+                  ))}
                 </select>
               </div>
             )}
@@ -190,32 +234,23 @@ const Create = () => {
 
         {/* Error Message */}
         {errorMessage && (
-          <div className="mb-4 text-red-600 font-semibold">{errorMessage}</div>
+          <p className="text-red-500 text-sm mt-4">{errorMessage}</p>
         )}
 
-        {/* Action Buttons */}
-        <div className="flex justify-center gap-5">
-          <button
-            className="px-4 py-2 bg-[#C61A01] text-white font-bold rounded-lg focus:outline-none"
-            onClick={handleLogout}
-          >
-            Log Out
-          </button>
-          <Link
-          to='/createapplication'>
-          <button
-            className={`px-6 py-2 ${
-              preferredProgram
-                ? "bg-[#C61A01] text-white"
-                : "bg-gray-300 text-gray-500"
-            } font-bold rounded-lg focus:outline-none`}
-            disabled={!preferredProgram}
-            onClick={handleSubmit}
-          >
-            Create Application
-          </button>
-          </Link>
-        </div>
+        {/* Submit Button */}
+       
+          <div className="mt-6">
+            <button
+            
+              type="button"
+              disabled={isButtonDisabled}
+              onClick={handleSubmit}
+              className="w-full py-2 bg-[#C61A01] text-white font-bold rounded-lg  disabled:bg-gray-400"
+            >
+              Continue to Details
+            </button>
+          </div>
+      
       </div>
     </div>
   );
