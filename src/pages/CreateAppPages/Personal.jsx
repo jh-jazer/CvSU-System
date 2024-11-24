@@ -195,7 +195,7 @@ const Personal = () => {
         >
           Prev
         </button>
-        <Link to="/createapplication/personal">
+        <Link to="/createapplication/contact">
           <button
             className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none"
           >
