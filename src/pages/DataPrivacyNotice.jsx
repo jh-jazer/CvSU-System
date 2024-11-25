@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import StudentImage from '../assets/student.jpg'
 
 const DataPrivacyNotice = () => {
   return (
+    <div
+        className="flex items-center justify-center min-h-screen bg-cover bg-center"
+        style={{ backgroundImage: `url(${StudentImage})` }}
+      >
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-4xl bg-white p-8 shadow-lg rounded-lg">
+        {/* Main Content */}
         {/* Header Section */}
         <h1 className="text-3xl font-extrabold text-[#C61A01] text-center mb-6">
           Data Privacy Notice and Consent Form
@@ -86,6 +92,7 @@ const DataPrivacyNotice = () => {
           </button>
         </div>
         </Link>
+      </div>
       </div>
     </div>
   );
