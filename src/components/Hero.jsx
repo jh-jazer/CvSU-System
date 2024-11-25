@@ -16,7 +16,7 @@ const Hero = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-[#081708]/80 flex items-center justify-center z-10">
           <div className="text-center mt-10 text-white space-y-6">
             <h1 className="text-5xl font-bold text-[#c5ffdf]">
-              Your Journey to Becoming a Tech Pioneer Starts Here
+              Your Journey Starts Here
             </h1>
             <p className="text-lg hidden sm:block px-3 text-[#c5ffdf]">
               "A comprehensive curriculum designed to equip you with in-demand
