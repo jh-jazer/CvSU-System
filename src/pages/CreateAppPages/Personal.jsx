@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppContext } from "../../contexts/AppContext";
 
 const Personal = () => {
-  // State to track form values
   const [formData, setFormData] = useState({
     givenName: '',
     familyName: '',
@@ -16,7 +14,6 @@ const Personal = () => {
     religion: 'Roman Catholic',
   });
 
-  // State to track validation errors
   const [errors, setErrors] = useState({
     givenName: '',
     familyName: '',
@@ -24,28 +21,29 @@ const Personal = () => {
     contactNumber: '',
   });
 
-  
-  // State to track if the Next button should be disabled
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const navigate = useNavigate(); 
-  // Validate the form
+  const navigate = useNavigate();
+
+  // Validate the form fields
   const validate = () => {
     let validationErrors = {};
     let isValid = true;
 
-    // Check if required fields are filled
     if (!formData.givenName) {
       validationErrors.givenName = "Given Name is required.";
       isValid = false;
     }
+
     if (!formData.familyName) {
       validationErrors.familyName = "Family Name is required.";
       isValid = false;
     }
+
     if (!formData.dob) {
       validationErrors.dob = "Date of Birth is required.";
       isValid = false;
     }
+
     if (!formData.contactNumber) {
       validationErrors.contactNumber = "Contact Number is required.";
       isValid = false;
@@ -58,26 +56,26 @@ const Personal = () => {
     return isValid;
   };
 
-  // Handle changes in the form fields
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => {
-      const newFormData = { ...prevState, [name]: value };
-      // Check if all required fields are filled to enable the Next button
+    setFormData((prevData) => {
+      const updatedFormData = { ...prevData, [name]: value };
+      
+      // Enable the Next button only when required fields are filled
       setIsButtonDisabled(
-        !newFormData.givenName || !newFormData.familyName || !newFormData.dob || !newFormData.contactNumber
+        !updatedFormData.givenName || !updatedFormData.familyName || !updatedFormData.dob || !updatedFormData.contactNumber
       );
-      return newFormData;
+
+      return updatedFormData;
     });
   };
 
-  // Handle form submission (validation check before proceeding)
+  // Handle form submission and navigate to the next page if valid
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Only proceed if form is valid
     if (validate()) {
-      // If validation is successful, navigate to the next page
       navigate('/createapplication/contact');
     } else {
       console.log("Form contains errors, submission blocked.");
@@ -85,17 +83,16 @@ const Personal = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">
+    <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col">
       {/* Header Section */}
-      <div>
-        <div className="text-center my-10">
-          <h1 className="text-3xl font-extrabold text-[#001800]">Personal Information</h1>
-          <h2 className="text-lg text-gray-600">Please fill out your Personal Information.</h2>
-        </div>
+      <div className="text-center my-10">
+        <h1 className="text-3xl font-extrabold text-[#001800]">Personal Information</h1>
+        <h2 className="text-lg text-gray-600">Please fill out your Personal Information.</h2>
       </div>
 
-      {/* Personal Information Fields */}
+      {/* Personal Information Form */}
       <div className="mx-11 mb-6">
+        {/* Given Name Field */}
         <div className="mb-4">
           <label className="text-gray-600 text-lg font-semibold" htmlFor="givenName">
             Given Name*
@@ -112,21 +109,7 @@ const Personal = () => {
           {errors.givenName && <p className="text-red-500 text-sm">{errors.givenName}</p>}
         </div>
 
-        <div className="mb-4">
-          <label className="text-gray-600 text-lg font-semibold" htmlFor="middleName">
-            Middle Name (Not Applicable)
-          </label>
-          <input
-            id="middleName"
-            name="middleName"
-            type="text"
-            className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
-            placeholder="N/A"
-            value={formData.middleName}
-            onChange={handleChange}
-          />
-        </div>
-
+        {/* Family Name Field */}
         <div className="mb-4">
           <label className="text-gray-600 text-lg font-semibold" htmlFor="familyName">
             Family Name*
@@ -143,6 +126,23 @@ const Personal = () => {
           {errors.familyName && <p className="text-red-500 text-sm">{errors.familyName}</p>}
         </div>
 
+        {/* Middle Name Field */}
+        <div className="mb-4">
+          <label className="text-gray-600 text-lg font-semibold" htmlFor="middleName">
+            Middle Name (Not Applicable)
+          </label>
+          <input
+            id="middleName"
+            name="middleName"
+            type="text"
+            className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
+            placeholder="N/A"
+            value={formData.middleName}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Suffix Field */}
         <div className="mb-4">
           <label className="text-gray-600 text-lg font-semibold" htmlFor="suffix">
             Suffix (Optional)
@@ -158,6 +158,7 @@ const Personal = () => {
           />
         </div>
 
+        {/* Sex Field */}
         <div className="mb-4">
           <label className="text-gray-600 text-lg font-semibold" htmlFor="sex">
             Sex
@@ -174,6 +175,7 @@ const Personal = () => {
           </select>
         </div>
 
+        {/* Date of Birth Field */}
         <div className="mb-4">
           <label className="text-gray-600 text-lg font-semibold" htmlFor="dob">
             Date of Birth*
@@ -189,6 +191,7 @@ const Personal = () => {
           {errors.dob && <p className="text-red-500 text-sm">{errors.dob}</p>}
         </div>
 
+        {/* Contact Number Field */}
         <div className="mb-4">
           <label className="text-gray-600 text-lg font-semibold" htmlFor="contactNumber">
             Contact Number*
@@ -205,6 +208,7 @@ const Personal = () => {
           {errors.contactNumber && <p className="text-red-500 text-sm">{errors.contactNumber}</p>}
         </div>
 
+        {/* Civil Status Field */}
         <div className="mb-4">
           <label className="text-gray-600 text-lg font-semibold" htmlFor="civilStatus">
             Civil Status
@@ -222,23 +226,34 @@ const Personal = () => {
           </select>
         </div>
 
+        {/* Religion Field */}
         <div className="mb-4">
-
+          <label className="text-gray-600 text-lg font-semibold" htmlFor="religion">
+            Religion
+          </label>
+          <select
+            id="religion"
+            name="religion"
+            className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
+            value={formData.religion}
+            onChange={handleChange}
+          >
+            <option value="Roman Catholic">Roman Catholic</option>
+            <option value="Islam">Islam</option>
+            <option value="Protestant">Protestant</option>
+            <option value="Hinduism">Hinduism</option>
+            <option value="Buddhism">Buddhism</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
       </div>
 
       {/* Action Buttons */}
       <div className="flex justify-end gap-5 mb-5 mx-5">
-        <Link to="/createapplication/details">
-          <button
-            className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
-          >
-            Prev
-          </button>
-        </Link>
-
         <Link to="/createapplication/contact">
           <button
-            className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none"
+            className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
+            disabled={isButtonDisabled}
             onClick={handleSubmit}
           >
             Next

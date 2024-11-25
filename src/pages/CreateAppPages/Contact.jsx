@@ -123,11 +123,17 @@ const Contact = () => {
 
   return (
     <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">
-      <div className="contact-form-container">
-        <h2 className="text-3xl font-extrabold flex justify-center items-center">Contact Information</h2>
-        <h2 className="text-lg text-gray-600">Please fill out your Contact Information.</h2>
+      <div>
+        <div className="text-center my-10">
+          <h1 className="text-3xl font-extrabold text-[#001800]">Contact Information</h1>
+          <h2 className="text-lg text-gray-600">Please fill out your Contact Information.</h2>
+        </div>
+      </div>
+     <div>
         <form onSubmit={handleSubmit}>
+
           {/* Phone Number */}
+          <div className='mx-11 mb-6'>
           <div className="form-group text-lg font-sans text-gray-600">
             <label className="text-gray-600 text-lg font-semibold" htmlFor="phoneNumber">Phone Number</label>
             <input
@@ -256,6 +262,7 @@ const Contact = () => {
               placeholder="Enter country"
             />
             {errors.country && <p className="text-red-500 text-sm">{errors.country}</p>}
+          </div>
           </div>
 
           {/* Submit Button */}
