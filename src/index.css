@@ -31,5 +31,67 @@
 .scrollbar-custom::-webkit-scrollbar-thumb:hover {
   background-color: #388e3c; /* Darker thumb color on hover */
 }
-  
-  
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px); /* Adjust the bounce height */
+  }
+  60% {
+    transform: translateY(-5px); /* Slightly lower bounce */
+  }
+}
+
+/* Main Button Styles */
+.mainButton {
+  font-size: 40px;
+  color: #f7f7f7;
+  margin-top: 40px;
+  align-self: center; /* Aligns center within flex container */
+  width: 400px;
+  height: 100px;
+  background-color: transparent;
+  border: 4px solid #f7f7f7;
+  border-radius: 10px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex; /* Added for content alignment */
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+
+  /* Add the animation */
+  animation: bounce 2s infinite; /* Duration and infinite loop */
+}
+
+.mainButton span {
+  position: relative;
+  font: 40px Poppins bold;
+  background-color: transparent;
+  z-index: 2;
+}
+
+.mainButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transition: left 0.3s ease;
+  z-index: 1;
+}
+
+.mainButton:hover::before {
+  left: 0;
+}
+
+.mainButton:hover {
+  color: #ffffff;
+  transform: scale(1.05); /* Slight zoom-in effect on hover */
+  animation: none; /* Stops the bounce animation on hover */
+}
+
