@@ -46,12 +46,14 @@
 
 /* Main Button Styles */
 .mainButton {
-  font-size: 40px;
+  font-size: 20px; /* Base font size for smaller screens */
   color: #f7f7f7;
-  margin-top: 40px;
-  align-self: center; /* Aligns center within flex container */
-  width: 400px;
-  height: 100px;
+  margin-top: 20px; /* Smaller margin for smaller screens */
+  align-self: center;
+  width: 80%; /* Flexible width relative to the screen size */
+  max-width: 400px; /* Prevents button from growing too large */
+  height: auto; /* Allow height to adjust dynamically */
+  padding: 15px 20px; /* Padding for consistent spacing */
   background-color: transparent;
   border: 4px solid #f7f7f7;
   border-radius: 10px;
@@ -59,21 +61,25 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  display: flex; /* Added for content alignment */
-  justify-content: center; /* Center text horizontally */
-  align-items: center; /* Center text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   /* Add the animation */
-  animation: bounce 2s infinite; /* Duration and infinite loop */
+  animation: bounce 2s infinite;
 }
 
+/* Adjust font inside the button */
 .mainButton span {
   position: relative;
-  font: 40px Poppins bold;
+  font-size: 20px; /* Adjust for smaller screens */
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
   background-color: transparent;
   z-index: 2;
 }
 
+/* Background hover effect */
 .mainButton::before {
   content: '';
   position: absolute;
@@ -91,7 +97,29 @@
 
 .mainButton:hover {
   color: #ffffff;
-  transform: scale(1.05); /* Slight zoom-in effect on hover */
-  animation: none; /* Stops the bounce animation on hover */
+  transform: scale(1.05);
+  animation: none; /* Stops bounce animation on hover */
 }
 
+/* Animation: bounce effect */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive Styles */
+@media screen and (min-width: 768px) {
+  .mainButton {
+    font-size: 30px; /* Larger font size for tablets and desktops */
+    width: 300px; /* Adjust width for larger screens */
+    padding: 20px 30px; /* Larger padding for bigger buttons */
+  }
+
+  .mainButton span {
+    font-size: 30px;
+  }
+}
