@@ -223,20 +223,7 @@ const Personal = () => {
         </div>
 
         <div className="mb-4">
-          <label className="text-gray-600 text-lg font-semibold" htmlFor="religion">
-            Religion
-          </label>
-          <select
-            id="religion"
-            name="religion"
-            className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
-            value={formData.religion}
-            onChange={handleChange}
-          >
-            <option value="Roman Catholic">Roman Catholic</option>
-            <option value="Christian">Christian</option>
-          </select>
-        </div>
+
       </div>
 
       {/* Action Buttons */}
