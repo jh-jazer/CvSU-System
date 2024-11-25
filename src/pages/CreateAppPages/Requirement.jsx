@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import '../CreateApppagesCSS/Requirement.css'
+import React, { useState, useEffect } from 'react';
+import '../CreateApppagesCSS/Requirement.css';
 import { Link } from "react-router-dom";
+
 const Requirement = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [requirements, setRequirements] = useState([]);
@@ -17,6 +18,8 @@ const Requirement = () => {
       setRequirements((prevRequirements) => [...prevRequirements, requirementData]);
       setNewRequirement(''); // Clear the input field after adding
       setNewImage(null); // Clear the image after adding
+    } else {
+      alert('Please provide both a name and an image for the requirement.');
     }
   };
 
@@ -34,10 +37,32 @@ const Requirement = () => {
     }
   };
 
+  // Enable the "Next" button only if at least one requirement is added
+  useEffect(() => {
+    if (requirements.length > 0) {
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+  }, [requirements]);
+
   return (
     <div className="requirement-form-container">
       <h2 className='text-3xl font-extrabold flex justify-center items-center'>Upload Requirements</h2>
       <form onSubmit={handleAddRequirement}>
+        <div className="form-group">
+          <label htmlFor="requirementName">Requirement Name</label>
+          <input
+            type="text"
+            id="requirementName"
+            name="requirementName"
+            value={newRequirement}
+            onChange={(e) => setNewRequirement(e.target.value)}
+            placeholder="Enter requirement name"
+            required
+          />
+        </div>
+
         <div className="form-group">
           <label htmlFor="requirementImage">Upload Document Image</label>
           <input
@@ -81,16 +106,19 @@ const Requirement = () => {
       </div>
       
       <div className="flex justify-end gap-5 mb-5 mx-5">
+      <Link to="/createapplication/education">
         <button
           className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
-          disabled={isButtonDisabled}
-          onClick={() => alert("Application submitted successfully!")}
         >
           Prev
         </button>
+        </Link>
+
+        {/* Disable Next button if no requirements have been added */}
         <Link to="/createapplication/appointment">
           <button
             className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none"
+            disabled={isButtonDisabled}
           >
             Next
           </button>

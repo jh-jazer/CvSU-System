@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../contexts/AppContext";
 
+
 const Details = () => {
   // Access values from the context
   const { applicantType, seniorHighTrack, strand, preferredProgram } = useAppContext();
@@ -39,7 +40,7 @@ const Details = () => {
         Application Details
       </h1>
       <h2 className="text-lg text-gray-600">
-        Please review your application information.
+        Please review your Application Information.
       </h2>
     </div>
 
@@ -103,8 +104,6 @@ const Details = () => {
     </Link>
   </div>
 </div>
-
-    
   );
 };
 
