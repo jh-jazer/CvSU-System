@@ -61,7 +61,7 @@ const Sidenav = ({ homeRef, aboutRef, newsRef, contactRef }) => {
           {/* Dropdown Menus */}
           {[
             { label: 'About Us', options: ['University History', 'Department of Computer Studies', 'Mission and Vision'] },
-            { label: 'Admission', options: ['Procedures', 'Admission Page'] },
+            { label: 'Admission', options: [{ label: 'Admission Procedures', path: '/apply' }, { label: 'Admission Page', path: '/apply' }] },
             { label: 'CvSU Portal', options: [{ label: 'Login', path: '/login' }, { label: 'Register', path: '/register' }], },
           ].map((menu) => (
             <div key={menu.label} className="relative">
@@ -112,7 +112,7 @@ const Sidenav = ({ homeRef, aboutRef, newsRef, contactRef }) => {
     {/* Dropdown Menus */}
     {[ 
       { label: 'About Us', options: ['University History', 'Department of Computer Studies', 'Mission and Vision'] },
-      { label: 'Admission', options: ['Procedures', 'Admission Page'] },
+      { label: 'Admission', options: [{ label: 'Admission Procedures', path: '/apply' }, { label: 'Admission Page', path: '/apply' }] },
       { label: 'CvSU Portal', options: [{ label: 'Login', path: '/login' }, { label: 'Register', path: '/register' }], }
     ].map((menu) => (
       <div key={menu.label} className="relative w-full px-6 py-3 mb-6">
