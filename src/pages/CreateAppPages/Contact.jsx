@@ -122,13 +122,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">
-      <div>
+    <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">  
+      {/* Header Section */}    
         <div className="text-center my-10">
           <h1 className="text-3xl font-extrabold text-[#001800]">Contact Information</h1>
           <h2 className="text-lg text-gray-600">Please fill out your Contact Information.</h2>
         </div>
-      </div>
+      
      <div>
         <form onSubmit={handleSubmit}>
 
@@ -266,15 +266,25 @@ const Contact = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="flex justify-end gap-5 mb-5 mx-5">
-            <Link to="/createapplication/personal">
-              <button className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none">Previous</button>
-            </Link>
-            <button className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none" 
-            >
-              Next
-            </button>
-          </div>
+             <div className="flex justify-end gap-5 mb-5 mx-5">
+      <Link to="/createapplication/personal">
+        <button
+          className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
+        >
+          Prev
+        </button>
+        </Link>
+        
+        <Link to="/createapplication/family">
+          <button
+            className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
+            disabled={isButtonDisabled}
+            onClick={handleSubmit}
+          >
+            Next
+          </button>
+        </Link>
+      </div>
         </form>
       </div>
     </div>

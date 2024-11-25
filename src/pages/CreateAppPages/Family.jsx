@@ -198,35 +198,27 @@
               {errors.familyAddress && <p className="text-red-500 text-sm">{errors.familyAddress}</p>}
             </div>
 
-            {/* Additional Information */}
-            <div className="form-group">
-              <label className='text-gray-600 text-lg font-semibold' htmlFor="additionalInfo">Additional Information</label>
-              <textarea
-                id="additionalInfo"
-                name="additionalInfo"
-                value={formData.additionalInfo}
-                onChange={handleChange}
-                className="w-full mt-2 p-3 border border-gray-300 rounded-lg"
-              />
-            </div>
-
-            {/* Action Buttons */}
+          
+            {/* Submit Button */}
             <div className="flex justify-end gap-5 mb-5 mx-5">
-              <Link to="/createapplication/contact">
+              <Link to="/createapplication/personal">
                 <button
-                 className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
-                  type="button"
+                  className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
                 >
-                  Back
+                  Prev
                 </button>
-              </Link>
-              <button
-                className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none"
-                onClick={handleSubmit}
-              >
-                Next
-              </button>
-            </div>
+                </Link>
+                
+                <Link to="/createapplication/family">
+                  <button
+                    className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
+                    disabled={isButtonDisabled}
+                    onClick={handleSubmit}
+                  >
+                    Next
+                  </button>
+                </Link>
+              </div>
           </form>
         </div>
       </div>
