@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import {
   AiOutlineInfoCircle,
   AiOutlineFileText,
@@ -46,60 +47,65 @@ const Sidenav = ({ homeRef, aboutRef, newsRef, contactRef }) => {
 
   return (
     <div>
-      {/* Top Navigation */}
-      <div
-        className={`fixed top-0 left-0 w-full h-[100px] z-[90] bg-[#E8E8E8] shadow-lg transition-transform duration-300 ${
-          showTopNav ? 'translate-y-0' : '-translate-y-full'
-        }`}
-      >
-        <div className="flex justify-between items-center px-3 pr-5 py-3">
-          <div className="logo transition-transform duration-300 hover:scale-110">
-            <img src={logo} alt="Logo" className="h-[80px]" />
-          </div>
-          <div className="hidden md:flex space-x-12 pr-20">
-            {/* Dropdown Menus */}
-            {[
-              { label: 'About Us', options: ['University History', 'Department of Computer Studies', 'Mission and Vision'] },
-              { label: 'Admission', options: ['Procedures', 'Admission Page'] },
-              { label: 'CvSU Portal', options: ['Login', 'Register'] },
-            ].map((menu) => (
-              <div key={menu.label} className="relative">
-                <button
-                  onClick={() => toggleDropdown(menu.label)}
-                  className="flex items-center text-[#033D04] text-lg hover:text-black"
-                >
-                  {menu.label}
-                  <span
-                    className={`ml-1 transform transition-transform ${
-                      activeDropdown === menu.label ? 'rotate-180' : ''
-                    }`}
-                  >
-                    ▼
-                  </span>
-                </button>
-                {activeDropdown === menu.label && (
-                  <div className="absolute left-0 mt-2 bg-white shadow-md rounded-lg z-50">
-                    {menu.options.map((option) => (
-                      <button
-                        key={option}
-                        className="block w-full px-4 py-2 text-left text-[#033D04] hover:bg-gray-100 hover:text-black"
-                      >
-                        {option}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <AiOutlineMenu
-            size={30}
-            onClick={handleNav}
-            className="md:hidden cursor-pointer text-gray-600"
-          />
+    {/* Top Navigation */}
+    <div
+      className={`fixed top-0 left-0 w-full h-[100px] z-[90] bg-[#E8E8E8] shadow-lg transition-transform duration-300 ${
+        showTopNav ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
+      <div className="flex justify-between items-center px-3 pr-5 py-3">
+        <div className="logo transition-transform duration-300 hover:scale-110">
+          <img src={logo} alt="Logo" className="h-[80px]" />
         </div>
+        <div className="hidden md:flex space-x-12 pr-5">
+          {/* Dropdown Menus */}
+          {[
+            { label: 'About Us', options: ['University History', 'Department of Computer Studies', 'Mission and Vision'] },
+            { label: 'Admission', options: ['Procedures', 'Admission Page'] },
+            { label: 'CvSU Portal', options: [{ label: 'Login', path: '/login' }, { label: 'Register', path: '/register' }], },
+          ].map((menu) => (
+            <div key={menu.label} className="relative">
+              <button
+                onClick={() => toggleDropdown(menu.label)}
+                className="flex items-center text-[#033D04] text-lg hover:text-black"
+              >
+                {menu.label}
+                <span
+                  className={`ml-1 transform transition-transform ${
+                    activeDropdown === menu.label ? 'rotate-180' : ''
+                  }`}
+                  style={{ fontSize: '9px' }} // Reducing font-size for the arrow
+                >
+                  ▼
+                </span>
+              </button>
+              {activeDropdown === menu.label && (
+                <div className="absolute left-0 mt-2 bg-white shadow-md rounded-lg z-50">
+                   {menu.options.map((option) => (
+                      // Check if option has a path, then render Link
+                      <Link
+                        key={option.label || option}
+                        to={option.path || '#'}
+                        className="block w-full px-4 py-2 text-left text-[#033D04] hover:bg-gray-100 hover:text-black"
+                        onClick={() => setNav(false)} // Close the dropdown after clicking
+                      >
+                        {option.label || option}
+                      </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <AiOutlineMenu
+          size={30}
+          onClick={handleNav}
+          className="md:hidden cursor-pointer text-gray-600"
+        />
       </div>
-
+    </div>
+  
+  
    {/* Mobile Navigation */}
 {nav && (
   <div className="fixed top-0 left-0 w-full h-screen bg-white/90 z-40 flex flex-col items-center justify-center pt-10">
