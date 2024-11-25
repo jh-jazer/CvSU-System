@@ -138,6 +138,7 @@ const Contact = () => {
             <label className="text-gray-600 text-lg font-semibold" htmlFor="phoneNumber">Phone Number</label>
             <input
               type="tel"
+              className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
               id="phoneNumber"
               name="phoneNumber"
               value={formData.phoneNumber}
@@ -149,10 +150,11 @@ const Contact = () => {
           </div>
 
           {/* Email Address */}
-          <div className="form-group text-gray-600">
-            <label className="text-gray-600 text-lg font-semibold" htmlFor="email">Email Address</label>
+          <div className="mb-4">
+            <label className="form-group text-lg font-sans text-gray-600" htmlFor="email">Email Address</label>
             <input
               type="email"
+              className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
               id="email"
               name="email"
               value={formData.email}
@@ -164,10 +166,11 @@ const Contact = () => {
           </div>
 
           {/* Emergency Contact Name */}
-          <div className="form-group text-lg text-gray-600">
-            <label className="text-gray-600 text-lg font-semibold" htmlFor="emergencyContactName">Emergency Contact Name</label>
+          <div className="mb-4">
+            <label className="form-group text-lg font-sans text-gray-600" htmlFor="emergencyContactName">Emergency Contact Name</label>
             <input
               type="text"
+              className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
               id="emergencyContactName"
               name="emergencyContactName"
               value={formData.emergencyContactName}
@@ -179,10 +182,11 @@ const Contact = () => {
           </div>
 
           {/* Emergency Contact Number */}
-          <div className="form-group text-lg text-gray-600">
-            <label className="text-gray-600 text-lg font-semibold" htmlFor="emergencyContactNumber">Emergency Contact Number</label>
+          <div className="mb-4">
+            <label className="form-group text-lg font-sans text-gray-600" htmlFor="emergencyContactNumber">Emergency Contact Number</label>
             <input
               type="tel"
+              className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
               id="emergencyContactNumber"
               name="emergencyContactNumber"
               value={formData.emergencyContactNumber}
@@ -194,10 +198,11 @@ const Contact = () => {
           </div>
 
           {/* Address Fields */}
-          <div className="form-group text-lg text-gray-600">
-            <label className="text-gray-600 text-lg font-semibold" htmlFor="addressLine1">Address Line 1</label>
+          <div className="mb-4">
+            <label className="form-group text-lg font-sans text-gray-600" htmlFor="addressLine1">Address Line 1</label>
             <input
               type="text"
+              className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
               id="addressLine1"
               name="addressLine1"
               value={formData.addressLine1}
@@ -208,10 +213,11 @@ const Contact = () => {
             {errors.addressLine1 && <p className="text-red-500 text-sm">{errors.addressLine1}</p>}
           </div>
 
-          <div className="form-group text-lg text-gray-600">
-            <label className="text-gray-600 text-lg font-semibold" htmlFor="city">City</label>
+          <div className="mb-4">
+            <label className="form-group text-lg font-sans text-gray-600" htmlFor="city">City</label>
             <input
               type="text"
+              className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
               id="city"
               name="city"
               value={formData.city}
@@ -222,10 +228,11 @@ const Contact = () => {
             {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
           </div>
 
-          <div className="form-group text-lg text-gray-600">
-            <label className="text-gray-600 text-lg font-semibold" htmlFor="state">State/Province/Region</label>
+          <div className="mb-4">
+            <label className="form-group text-lg font-sans text-gray-600" htmlFor="state">State/Province/Region</label>
             <input
               type="text"
+              className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
               id="state"
               name="state"
               value={formData.state}
@@ -236,10 +243,11 @@ const Contact = () => {
             {errors.state && <p className="text-red-500 text-sm">{errors.state}</p>}
           </div>
 
-          <div className="form-group text-lg text-gray-600">
-            <label className="text-gray-600 text-lg font-semibold" htmlFor="zipCode">Zip Code</label>
+          <div className="mb-4">
+            <label className="form-group text-lg font-sans text-gray-600" htmlFor="zipCode">Zip Code</label>
             <input
               type="text"
+              className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
               id="zipCode"
               name="zipCode"
               value={formData.zipCode}
@@ -250,11 +258,12 @@ const Contact = () => {
             {errors.zipCode && <p className="text-red-500 text-sm">{errors.zipCode}</p>}
           </div>
 
-          <div className="form-group text-lg text-gray-600">
-            <label className="text-gray-600 text-lg font-semibold" htmlFor="country">Country</label>
+          <div className="mb-4">
+            <label className="form-group text-lg font-sans text-gray-600" htmlFor="country">Country</label>
             <input
               type="text"
               id="country"
+              className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#345e34]"
               name="country"
               value={formData.country}
               onChange={handleChange}

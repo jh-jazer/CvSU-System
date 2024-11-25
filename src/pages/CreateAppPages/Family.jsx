@@ -95,13 +95,19 @@
     };
 
     return (
-      <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">
-        <div className="family-form-container">
-          <h2 className='text-3xl font-extrabold flex justify-center items-center'>Family Profile</h2>
-          <h2 className="text-lg text-gray-600">Please fill out your Family Information.</h2>
+      <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">  
+        {/* Header Section */}    
+          <div className="text-center my-10">
+            <h1 className="text-3xl font-extrabold text-[#001800]">Family Information</h1>
+            <h2 className="text-lg text-gray-600">Please fill out your Family Information.</h2>
+          </div>
+          
+          <div>
           <form onSubmit={handleSubmit}>
+
             {/* Father's Name */}
-            <div className="form-group">
+             <div className='mx-11 mb-6'>
+              <div className="form-group text-lg font-sans text-gray-600">
               <label className='text-gray-600 text-lg font-semibold' htmlFor="fatherName">Father's Name*</label>
               <input
                 type="text"
@@ -218,6 +224,7 @@
                     Next
                   </button>
                 </Link>
+              </div>
               </div>
           </form>
         </div>

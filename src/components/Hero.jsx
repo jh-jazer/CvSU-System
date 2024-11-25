@@ -18,13 +18,13 @@ const Hero = () => {
             <h1 className="text-5xl font-bold text-[#c5ffdf]">
               Your Journey to Becoming a Tech Pioneer Starts Here
             </h1>
-            <p className="text-lg px-3 text-[#c5ffdf]">
+            <p className="text-lg hidden sm:block px-3 text-[#c5ffdf]">
               "A comprehensive curriculum designed to equip you with in-demand
               skills in programming, software development, and more."
             </p>
 
             {/* Centered Apply Button */}
-            <div className=" flex justify-center">
+            <div className=" flex justify-center mx-20">
               <Link to="/apply">
                 <h2 className="mainButton text-3xl text-[#C61A01] font-bold text-center bg-white py-4 px-8 rounded-full shadow-md hover:bg-[#C61A01] hover:text-white transition duration-300">
                   APPLY NOW

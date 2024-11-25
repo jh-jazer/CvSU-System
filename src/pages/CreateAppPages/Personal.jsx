@@ -91,8 +91,7 @@ const Personal = () => {
       </div>
 
       {/* Personal Information Form */}
-      <div className="mx-11 mb-6">
-        {/* Given Name Field */}
+        <div className="mx-11 mb-6">
         <div className="form-group text-lg font-sans text-gray-600">
           <label className="text-gray-600 text-lg font-semibold" htmlFor="givenName">
             Given Name*

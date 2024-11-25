@@ -113,7 +113,7 @@ const Sidenav = ({ homeRef, aboutRef, newsRef, contactRef }) => {
     {[ 
       { label: 'About Us', options: ['University History', 'Department of Computer Studies', 'Mission and Vision'] },
       { label: 'Admission', options: ['Procedures', 'Admission Page'] },
-      { label: 'CvSU Portal', options: ['Login', 'Register'] }
+      { label: 'CvSU Portal', options: [{ label: 'Login', path: '/login' }, { label: 'Register', path: '/register' }], }
     ].map((menu) => (
       <div key={menu.label} className="relative w-full px-6 py-3 mb-6">
         <button
@@ -123,18 +123,20 @@ const Sidenav = ({ homeRef, aboutRef, newsRef, contactRef }) => {
           {menu.label}
         </button>
 
-        {/* Dropdown Content */}
         {activeDropdown === menu.label && (
-          <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-lg w-full z-50">
-            {menu.options.map((option) => (
-              <button
-                key={option}
-                className="w-full px-6 py-2 text-left text-[#033D04] font-medium hover:bg-gray-100 hover:text-black transition-all ease-in-out duration-200"
-              >
-                {option}
-              </button>
-            ))}
-          </div>
+                <div className="absolute left-0 mt-2 bg-white shadow-md rounded-lg z-50">
+                   {menu.options.map((option) => (
+                      // Check if option has a path, then render Link
+                      <Link
+                        key={option.label || option}
+                        to={option.path || '#'}
+                        className="block w-full px-4 py-2 text-left text-[#033D04] hover:bg-gray-100 hover:text-black"
+                        onClick={() => setNav(false)} // Close the dropdown after clicking
+                      >
+                        {option.label || option}
+                      </Link>
+                  ))}
+                </div>
         )}
       </div>
     ))}
