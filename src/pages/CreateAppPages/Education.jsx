@@ -109,14 +109,18 @@ const Education = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">
-      <div className="education-form-container">
-        <h2 className='text-3xl font-extrabold flex justify-center items-center'>Educational Information</h2>
-        <h2 className="text-lg text-gray-600">Please fill out your Educational Information.</h2>
+    <div className="w-full min-h-screen bg-white p-8 pt-12 shadow-xl rounded-lg flex flex-col justify-between">  
+        {/* Header Section */}    
+          <div className="text-center my-10">
+            <h1 className="text-3xl font-extrabold text-[#001800]">Educational Information</h1>
+            <h2 className="text-lg text-gray-600">Please fill out your Educational Information.</h2>
+          </div>
+
+          <div>
         <form onSubmit={handleSubmit}>
           {/* Elementary School Fields */}
-          <h3 className='text-3xl font-extrabold flex justify-center items-center'>Elementary School</h3>
-          <div className="form-group">
+          <div className='mx-11 mb-6'>
+          <div className="form-group text-lg font-sans text-gray-600">
             <label className='text-gray-600 text-lg font-semibold' htmlFor="elementarySchoolName">Elementary School Name</label>
             <input
               type="text"
@@ -159,7 +163,7 @@ const Education = () => {
           </div>
 
           {/* High School Fields */}
-          <h3 className='text-3xl font-extrabold flex justify-center items-center'>High School</h3>
+          <hr className="my-8 border-t-2 border-black" />
           <div className="form-group">
             <label className='text-gray-600 text-lg font-semibold' htmlFor="highSchoolName">High School Name</label>
             <input
@@ -203,7 +207,7 @@ const Education = () => {
           </div>
 
           {/* Senior High School Fields */}
-          <h3 className='text-3xl font-extrabold flex justify-center items-center'>Senior High School</h3>
+          <hr className="my-8 border-t-2 border-black" />
           <div className="form-group">
             <label className='text-gray-600 text-lg font-semibold' htmlFor="seniorHighSchoolName">Senior High School Name</label>
             <input
@@ -246,21 +250,26 @@ const Education = () => {
             {errors.seniorHighSchoolYearGraduated && <p className="text-red-500 text-sm">{errors.seniorHighSchoolYearGraduated}</p>}
           </div>
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-end gap-5 mb-5 mx-5">
-          <Link to="/createapplication/family">
-          <button
-            className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
-          >
-            Prev
-          </button>
-        </Link>
-            <button
-             className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none"
-             onClick={handleSubmit}
-            >
-              Next
-            </button>
+            {/* Submit Button */}
+            <div className="flex justify-end gap-5 mb-5 mx-5">
+              <Link to="/createapplication/family">
+                <button
+                  className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
+                >
+                  Prev
+                </button>
+                </Link>
+                
+                <Link to="/createapplication/requirement">
+                  <button
+                    className="px-6 py-2 bg-[#345e34] text-white font-bold rounded-lg hover:bg-green-900 focus:outline-none disabled:bg-gray-400"
+                    disabled={isButtonDisabled}
+                    onClick={handleSubmit}
+                  >
+                    Next
+                  </button>
+                </Link>
+              </div>
           </div>
         </form>
       </div>

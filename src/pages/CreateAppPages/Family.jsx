@@ -113,6 +113,7 @@
                 type="text"
                 id="fatherName"
                 name="fatherName"
+                placeholder="Father Name"
                 value={formData.fatherName}
                 onChange={handleChange}
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg"
@@ -127,6 +128,7 @@
                 type="text"
                 id="motherName"
                 name="motherName"
+                placeholder="Mother Name"
                 value={formData.motherName}
                 onChange={handleChange}
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg"
@@ -141,6 +143,7 @@
                 type="text"
                 id="fatherOccupation"
                 name="fatherOccupation"
+                placeholder="Father Occupation"
                 value={formData.fatherOccupation}
                 onChange={handleChange}
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg"
@@ -155,6 +158,7 @@
                 type="text"
                 id="motherOccupation"
                 name="motherOccupation"
+                placeholder="Mother Occupation"
                 value={formData.motherOccupation}
                 onChange={handleChange}
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg"
@@ -169,6 +173,7 @@
                 type="number"
                 id="numberOfSiblings"
                 name="numberOfSiblings"
+                placeholder="Number of Siblings"
                 value={formData.numberOfSiblings}
                 onChange={handleChange}
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg"
@@ -183,6 +188,7 @@
                 type="text"
                 id="familyIncome"
                 name="familyIncome"
+                placeholder="Family Income"
                 value={formData.familyIncome}
                 onChange={handleChange}
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg"
@@ -197,6 +203,7 @@
                 type="text"
                 id="familyAddress"
                 name="familyAddress"
+                placeholder="Family Address"
                 value={formData.familyAddress}
                 onChange={handleChange}
                 className="w-full mt-2 p-3 border border-gray-300 rounded-lg"
