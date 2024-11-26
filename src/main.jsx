@@ -26,6 +26,9 @@ import Requirement from './pages/CreateAppPages/Requirement.jsx';
 import Appointment from './pages/CreateAppPages/Appointment.jsx';
 
 import Register from './pages/Register.jsx';
+import UniversityHistory from './pages/AboutUsPages/UniversityHistory.jsx';
+import ComputerStudies from './pages/AboutUsPages/ComputerStudies.jsx';
+import MissionVision from './pages/AboutUsPages/MissionVision.jsx';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 
@@ -55,8 +58,17 @@ const router = createBrowserRouter([
     element: <Create />,
   },
   {
-    path: "/createapplication",
-    element: <CreateApplication />,
+    path: "university",
+    element: <UniversityHistory />,
+  },
+  {
+    path: "missionvision",
+    element: <MissionVision />,
+  },
+
+  {
+    path: "/comstudy",
+    element: <ComputerStudies />,
     children: [
       {
         index: true, // Default route for /studentdb

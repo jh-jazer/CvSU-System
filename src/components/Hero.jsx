@@ -25,7 +25,7 @@ const Hero = () => {
             </p>
 
             {/* Centered Apply Button */}
-            <div className="flex justify-center">
+            <div className="flex justify-center items-center">
               <Link to="/apply">
                 <button className="mainButton text-lg sm:text-2xl text-[#C61A01] font-bold bg-white py-3 sm:py-4 px-6 sm:px-8 rounded-full shadow-md hover:bg-[#C61A01] hover:text-white transition duration-300">
                   APPLY NOW
