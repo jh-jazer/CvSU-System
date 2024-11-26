@@ -60,7 +60,7 @@ const Sidenav = ({ homeRef, aboutRef, newsRef, contactRef }) => {
         <div className="hidden md:flex space-x-12 pr-5">
           {/* Dropdown Menus */}
           {[
-            { label: 'About Us', options: ['University History', 'Department of Computer Studies', 'Mission and Vision'] },
+            { label: 'About Us', options: [{label: 'University History', path:'university'}, {label:'Department of Computer Studies',path:'comstudy'}, {label:'Mission and Vision',path:'missionvision'}] },
             { label: 'Admission', options: [{ label: 'Admission Procedures', path: '/apply' }, { label: 'Admission Page', path: '/apply' }] },
             { label: 'CvSU Portal', options: [{ label: 'Login', path: '/login' }, { label: 'Register', path: '/register' }], },
           ].map((menu) => (

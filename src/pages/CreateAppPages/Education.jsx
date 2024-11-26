@@ -102,7 +102,7 @@ const Education = () => {
     e.preventDefault();
     if (validate()) {
       // Proceed with form submission logic (e.g., API call, navigation, etc.)
-      navigate('/createapplication/appointment');
+      navigate('/createapplication/requirements');
     } else {
       console.log("Form contains errors, submission blocked.");
     }
